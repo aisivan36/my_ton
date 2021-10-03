@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 void main() {
-  runApp(MusicWidget());
+  runApp(const MusicWidget());
 }
 
 class MusicWidget extends StatelessWidget {
-  void PlayMusic(int musicNumber) {
+  const MusicWidget({Key? key}) : super(key: key);
+
+  void playMusic(int musicNumber) {
     final player = AudioCache();
     player.play('music-$musicNumber.mp3');
   }
@@ -20,14 +22,14 @@ class MusicWidget extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 3.0),
         child: ElevatedButton(
           onPressed: () {
-            PlayMusic(musicNumber);
+            playMusic(musicNumber);
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Row(
               children: [
                 Icon(Icons.music_note, color: buttonColor),
-                SizedBox(width: 20.0),
+                const SizedBox(width: 20.0),
                 Text(
                   buttonText,
                   style: TextStyle(color: buttonColor, fontSize: 20.0),
@@ -47,7 +49,7 @@ class MusicWidget extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.purple,
-          title: Text('tones app :) '),
+          title: const Text('tones app :) '),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
